@@ -17,6 +17,8 @@ int main() {
     while (!flag) {
         input();
         move_obsticles();
+        delete_obstacle();
+        if (obsticles.empty()) create_obs();
         draw_board();
         is_end_game();
         Sleep(50);

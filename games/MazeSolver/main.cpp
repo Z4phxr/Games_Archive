@@ -14,7 +14,7 @@ int main()
     char** tempb = create_board(WYS, SZER);
 
     FILE* plik;
-    if((plik = fopen("games/LabiryntSolver/lab.txt", "r"))==NULL)
+    if((plik = fopen("games/MazeSolver/lab.txt", "r"))==NULL)
     {
         if((plik = fopen("lab.txt", "r"))==NULL)
         {

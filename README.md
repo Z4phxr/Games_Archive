@@ -1,25 +1,28 @@
 # Console Games Collection
 
-These projects come from a phase where I practiced game development by implementing mechanics entirely in ASCII. It was a great way to focus on logic, data structures, and gameplay without worrying about real graphics. My GPU has never been so bored.
+> A collection of console-based games written in C/C++ as a passion project in 2024.  
+> These run entirely in the Windows terminal using ASCII art and the Console API - no graphics engine.
 
-## About
-
-A collection of console-based games written in C/C++ as a passion project in 2023. These games run directly in the Windows terminal using the Console API for rendering and input handling.
+---
 
 ## Games
 
-- **Blackjack** - Classic card game where you try to beat the dealer
-- **FloppyBirds** - Navigate a bird through obstacles
-- **GoogleDino** - The Chrome dinosaur runner game recreated in terminal
-- **LabiryntSolver** - Watch an algorithm solve a maze in real-time
-- **Snake** - The legendary Nokia classic
-- **SpaceGame** - Shoot enemies in space
+| Game | Description |
+|------|-------------|
+| **Blackjack** | Classic card game - beat the dealer |
+| **FloppyBirds** | Navigate a bird through obstacles |
+| **GoogleDino** | Chrome dinosaur runner, recreated in the terminal |
+| **MazeSolver** | Watch an algorithm solve a maze in real-time (map loaded from a txt file, swappable) |
+| **Snake** | The legendary Nokia classic |
+| **SpaceGame** | Shoot enemies in space |
+
+---
 
 ## Project Structure
 
 ```
-SpaceGame/
-├── game_lib/           # some functions I was using a lot
+Games_Archive/
+├── game_lib/           # Shared utility library
 │   ├── game_lib.cpp
 │   ├── game_lib.h
 │   └── main.cpp
@@ -27,34 +30,36 @@ SpaceGame/
 │   ├── Blackjack/
 │   ├── FloppyBirds/
 │   ├── GoogleDino/
-│   ├── LabiryntSolver/
+│   ├── MazeSolver/
 │   ├── Snake/
 │   └── SpaceGame/
 └── README.md
 ```
 
+---
+
 ## What I Learned
 
-Working on these projects taught me several practical C++ concepts:
+- **Bitwise Input Handling** - bit flags (`1 << 0`, `1 << 1`, …) for simultaneous key presses and diagonal movement
+- **Dynamic Memory Management** - 2D arrays with `malloc`, pointer arithmetic, manual memory allocation
+- **Windows Console API** - `SetConsoleCursorPosition`, `_kbhit()`, `_getch()` for cursor control and non-blocking input
+- **Game Loop Architecture** - `Sleep()`-based timing, separated input / update / render phases
+- **Collision Detection** - point-based and object-based systems
+- **Pathfinding Basics** - simple follow/chase AI for enemies in `game_lib` (probably the most fun one)
+- **Code Reusability** - shared `game_lib`: 2D board system, point/obstacle classes, collision, enemy AI
 
-- **Bitwise Operations for Input Handling**: Using bit flags (`1 << 0`, `1 << 1`, etc.) to handle simultaneous key presses, allowing diagonal movement with clean, efficient code
-- **Dynamic Memory Management**: Implementing 2D arrays with `malloc` for game boards, understanding pointer arithmetic and manual memory allocation
-- **Windows Console API**: Using `SetConsoleCursorPosition` for cursor control, `_kbhit()` and `_getch()` for non-blocking input
-- **Game Loop Architecture**: Creating smooth game loops with proper timing using `Sleep()`, separating input/update/render phases
-- **Collision Detection**: Building point-based and object-based collision systems for game interactions
-- **Pathfinding Basics**: Implementing a simple follow/chase algorithm for enemy AI in the game library, probably the most fun one.
-- **Code Reusability**: Creating a shared library (`game_lib`) with common game functions like board management, drawing, and movement
-
-The `game_lib` folder contains experimental reusable components I built while working on these games, a 2D board system, point/obstacle classes, collision detection, and a simple enemy AI that follows the player.
+---
 
 ## Requirements
 
 - Windows OS
 - MinGW GCC/G++ compiler
 
+---
+
 ## How to Compile & Run
 
-**Note:** If you experience rendering issues or glitches, try maximizing your terminal window or switching to fullscreen mode for the best experience.
+> **Tip:** If you see rendering glitches, maximize or fullscreen your terminal window.
 
 ### Blackjack
 ```powershell
@@ -62,11 +67,15 @@ g++ games/Blackjack/blackjack.c games/Blackjack/karty.c games/Blackjack/main.c -
 .\blackjack.exe
 ```
 
+<img src="screenshots/blackjack.png" width="700" alt="Blackjack screenshot">
+
 ### FloppyBirds
 ```powershell
 g++ games/FloppyBirds/main.cpp games/FloppyBirds/func.cpp -o floppybird.exe
 .\floppybird.exe
 ```
+
+<img src="screenshots/floppybirds.png" width="500" alt="Floppy birds screenshot ">
 
 ### GoogleDino
 ```powershell
@@ -74,11 +83,15 @@ g++ games/GoogleDino/main.cpp games/GoogleDino/game.cpp games/GoogleDino/func.cp
 .\dino.exe
 ```
 
-### LabiryntSolver
+<img src="screenshots/dino.png" width="700" alt="GoogleDino screenshot">
+
+### MazeSolver
 ```powershell
-g++ games/LabiryntSolver/main.cpp games/LabiryntSolver/game_lib.cpp -o labirynt.exe
-.\labirynt.exe
+g++ games/MazeSolver/main.cpp games/MazeSolver/game_lib.cpp -o maze.exe
+.\maze.exe
 ```
+
+<img src="screenshots/maze.png" width="500" alt="MazeSolver screenshot">
 
 ### Snake
 ```powershell
@@ -86,10 +99,18 @@ g++ games/Snake/snake.cpp -o snake.exe
 .\snake.exe
 ```
 
+<img src="screenshots/snake.png" width="500" alt="Snake screenshot">
+
 ### SpaceGame
 ```powershell
 g++ games/SpaceGame/SpaceGame.cpp games/SpaceGame/func.cpp -o spacegame.exe
 .\spacegame.exe
 ```
 
-Made with C++ in 2023
+<img src="screenshots/space.png" width="500" alt="SpaceGame screenshot">
+
+
+
+---
+
+Maybe back then I didn't know how handle graphics and ux but that never stopped me ig
